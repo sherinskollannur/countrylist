@@ -23,6 +23,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { color } from "framer-motion";
+import dummyImg from "../assets/dummyImg.jpg";
 
 const HomePage = () => {
   // const dispatch = useDispatch();
@@ -38,6 +39,11 @@ const HomePage = () => {
   const [countries, setCountries] = useState([]);
   const [visible, setVisible] = useState(10);
   const [activeTab, setActiveTab] = useState("All");
+
+  const filteredCountries =
+    activeTab === "All"
+      ? countries
+      : countries.filter((country) => country.region === activeTab);
 
   useEffect(() => {
     fetch("https://restcountries.com/v2/all?fields=name,region,flag")
@@ -110,7 +116,7 @@ const HomePage = () => {
                   className="d-flex align-items-center justify-content-center bg-light p-5"
                   style={{ height: "200px" }}
                 >
-                  <img src="src\assets\dummyImg.jpg" />
+                  <img src={dummyImg} />
                 </div>
               </Carousel.Item>
               <Carousel.Item>
@@ -118,7 +124,7 @@ const HomePage = () => {
                   className="d-flex align-items-center justify-content-center bg-light p-5"
                   style={{ height: "200px" }}
                 >
-                  <img src="src\assets\dummyImg.jpg" />
+                  <img src={dummyImg} />
                 </div>
               </Carousel.Item>
             </Carousel>
@@ -129,7 +135,7 @@ const HomePage = () => {
               style={{ height: "200px" }}
             >
               <img
-                src="src\assets\dummyImg.jpg"
+                src={dummyImg}
                 style={{
                   width: "100%",
                   height: "200px",
@@ -144,14 +150,14 @@ const HomePage = () => {
       <Container>
         {/* {loading && <p>Loading...</p>} */}
         <Row className="mt-4 g-3">
-          {countries.slice(0, visible).map((country, index) => (
+          {filteredCountries.slice(0, visible).map((country, index) => (
             <Col xs={12} sm={6} key={index}>
               <Card className="custom-card shadow-sm">
                 <Row className="g-0 align-items-center">
                   {/* Left Side - Image Placeholder */}
                   <Col xs={4} className="p-2">
                     <img
-                      src="src\assets\dummyImg.jpg"
+                      src={dummyImg}
                       style={{
                         width: "100%",
                         height: "80px",

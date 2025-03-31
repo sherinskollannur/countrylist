@@ -10,6 +10,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import loginImg from "../assets/loginImg.jpg";
 
 const Login = () => {
   const { signIn } = useSignIn();
@@ -181,7 +182,7 @@ const Login = () => {
         </Col>
 
         <Col md={6} className="auth-image">
-          <img src="src\assets\loginImg.jpg" alt="Illustration" />
+          <img src={loginImg} alt="Illustration" />
         </Col>
       </Row>
     </Container>

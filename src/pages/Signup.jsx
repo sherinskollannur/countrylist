@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSignUp, useClerk } from "@clerk/clerk-react";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import "./auth.css";
+import loginImg from "../assets/loginImg.jpg";
 
 const Signup = () => {
   const { signUp } = useSignUp();
@@ -91,7 +92,7 @@ const Signup = () => {
         </Col>
 
         <Col md={6} className="auth-image">
-          <img src="src\assets\loginImg.jpg" alt="Illustration" />
+          <img src={loginImg} alt="Illustration" />
         </Col>
       </Row>
     </Container>
