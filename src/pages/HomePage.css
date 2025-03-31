@@ -1,0 +1,40 @@
+.line {
+  height: 2px;
+  background-color: #333;
+  width: 100%;
+}
+.welcome-text {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.country-text-color {
+  color: #3d3d3d;
+}
+
+.non-active-tab {
+  color: #8b8b8b;
+}
+
+.active-tab {
+  position: relative;
+  font-weight: 600;
+}
+
+.active-tab::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #3d3d3d; /* Adjust color as needed */
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
+
+.custom-card {
+  border: 2px solid #3e3e3e !important; /* 1px bold black border */
+  border-radius: 0 !important; /* Square corners */
+}

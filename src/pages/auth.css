@@ -1,0 +1,84 @@
+.auth-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-box {
+  display: flex;
+  width: 80%;
+  max-width: 900px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.auth-form {
+  padding: 40px;
+  flex: 1;
+}
+
+.auth-form h2 {
+  margin-bottom: 10px;
+}
+
+.auth-form p {
+  color: gray;
+}
+
+.auth-form .error {
+  color: red;
+  font-size: 0.9em;
+}
+
+.auth-form input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth-form .remember-me {
+  margin-top: 10px;
+}
+
+.sign-in-btn,
+.sign-up-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.social-signin {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-signin .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-signin .social-icons svg {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.auth-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.auth-image img {
+  max-width: 100%;
+  height: auto;
+}
