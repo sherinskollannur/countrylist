@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { fetchCountries } from "../store/countrySlice";
-import { useClerk } from "@clerk/clerk-react";
 import CountryCard from "../components/countries/CountryCard";
 import React from "react";
 import {
@@ -22,34 +21,32 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
-import { color } from "framer-motion";
 import dummyImg from "../assets/dummyImg.jpg";
+import { useClerk, useAuth } from "@clerk/clerk-react";
 
 const HomePage = () => {
-  // const dispatch = useDispatch();
-  // const { setActive, signOut } = useClerk();
-  // const { countries, loading } = useSelector((state) => state.countries);
-  // const [visible, setVisible] = useState(10);
-  // const [activeTab, setActiveTab] = useState("All");
-
-  // useEffect(() => {
-  //   dispatch(fetchCountries());
-  // }, [dispatch]);
-
-  const [countries, setCountries] = useState([]);
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((state) => state.countries);
   const [visible, setVisible] = useState(10);
   const [activeTab, setActiveTab] = useState("All");
+  const { signOut } = useClerk();
+  const { isSignedIn } = useAuth();
+
+  useEffect(() => {
+    dispatch(fetchCountries());
+  }, [dispatch]);
+
+  if (activeTab === "Logout" && isSignedIn) {
+    signOut();
+  }
 
   const filteredCountries =
     activeTab === "All"
-      ? countries
-      : countries.filter((country) => country.region === activeTab);
+      ? data
+      : data.filter((country) => country.region === activeTab);
 
-  useEffect(() => {
-    fetch("https://restcountries.com/v2/all?fields=name,region,flag")
-      .then((res) => res.json())
-      .then((data) => setCountries(data));
-  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <Container fluid className="p-0">
@@ -68,7 +65,7 @@ const HomePage = () => {
           {/* Collapsible Menu */}
           <Navbar.Collapse id="navbar-nav">
             <Nav className="ms-auto">
-              {["All", "Asia", "Europe"].map((menu) => (
+              {["All", "Asia", "Europe", "Logout"].map((menu) => (
                 <Nav.Link
                   key={menu}
                   href="#"
@@ -181,7 +178,7 @@ const HomePage = () => {
             </Col>
           ))}
 
-          {visible < countries.length && (
+          {visible < data.length && (
             <div className="d-flex justify-content-center ">
               <Button
                 className="px-4 py-2 mb-4 rounded-0"

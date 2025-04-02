@@ -1,11 +1,14 @@
 import AppRoutes from "../src/router/Routes";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="app-container">
-      <AppRoutes />
-    </div>
+    <BrowserRouter>
+      <div className="app-container">
+        <AppRoutes />
+      </div>
+    </BrowserRouter>
   );
 }
 

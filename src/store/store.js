@@ -5,6 +5,6 @@ import countryReducer from "./countrySlice";
 export default configureStore({
   reducer: {
     auth: authReducer,
-    country: countryReducer,
+    countries: countryReducer,
   },
 });
